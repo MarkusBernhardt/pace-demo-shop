@@ -5,3 +5,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .d-flex { display: flex; }
 .gap-1 { gap: 1rem; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.wrap { flex-wrap: wrap; }

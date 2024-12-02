@@ -27,7 +27,42 @@ export class ProductOverviewComponent {
       name: 'Product 3',
       price: 300,
       image: 'https://via.placeholder.com'
-    }
+    },
+    {
+      name: 'Product 4',
+      price: 400,
+      image: 'https://via.placeholder.com'
+    },
+    {
+      name: 'Product 5',
+      price: 500,
+      image: 'https://via.placeholder.com'
+    },
+    {
+      name: 'Product 6',
+      price: 600,
+      image: 'https://via.placeholder.com'
+    },
+    {
+      name: 'Product 7',
+      price: 700,
+      image: 'https://via.placeholder.com'
+    },
+    {
+      name: 'Product 8',
+      price: 800,
+      image: 'https://via.placeholder.com'
+    },
+    {
+      name: 'Product 9',
+      price: 900,
+      image: 'https://via.placeholder.com'
+    },
+    {
+      name: 'Product 10',
+      price: 1000,
+      image: 'https://via.placeholder.com'
+    },
   ];
 
 }
