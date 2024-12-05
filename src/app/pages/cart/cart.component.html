@@ -1,0 +1,7 @@
+<mat-list>
+    <app-product-list-item *ngFor="let product of products$ | async" [product]="product"></app-product-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item *ngIf="products$ | async as products">
+        <span matLine class="fw-bold">Total {{ getTotalPrice() | async }} €</span>
+    </mat-list-item>
+</mat-list>

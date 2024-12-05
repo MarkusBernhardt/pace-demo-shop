@@ -3,4 +3,7 @@
         <mat-card-title>{{ product.name }}</mat-card-title>
         <mat-card-subtitle>{{ product.price }} €</mat-card-subtitle>
     </mat-card-header>
+    <mat-card-footer>
+        <button mat-raised-button color="primary" (click)="onAddToCart()">Add to cart</button>
+    </mat-card-footer>
 </mat-card>

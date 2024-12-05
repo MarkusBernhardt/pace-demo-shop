@@ -1,9 +1,4 @@
-<mat-drawer-container class="app-container">
-  <mat-drawer  mode="over" position="end" opened="{{ showCart$ | async }}" (closed)="cartClosed()">
-    <p>Drawer content</p>
-  </mat-drawer>
-  <mat-drawer-content>
-    <app-navigation-bar></app-navigation-bar>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+<app-navigation-bar></app-navigation-bar>
+<div class="content-wrapper d-flex">
+  <router-outlet></router-outlet>
+</div>
