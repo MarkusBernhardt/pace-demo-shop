@@ -1,6 +1,6 @@
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { CartService } from './cart.service';
 import { BehaviorSubject, map } from 'rxjs';
 import { Product } from '../../product/product';
 import { ProductListItemComponent } from "../../product/product-list-item/product-list-item.component";

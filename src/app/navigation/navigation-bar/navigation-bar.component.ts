@@ -3,7 +3,8 @@ import { MatBadge } from '@angular/material/badge';
 import {  MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../pages/cart/cart.service';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -11,7 +12,8 @@ import { CartService } from '../../services/cart.service';
     RouterModule,
     MatIconButton,
     MatIcon,
-    MatBadge
+    MatBadge,
+    MatDivider
   ],
   templateUrl: './navigation-bar.component.html',
   styleUrl: './navigation-bar.component.css'

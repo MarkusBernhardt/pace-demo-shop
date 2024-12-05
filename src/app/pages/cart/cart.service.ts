@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../product/product';
+import { Product } from '../../product/product';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class CartService {
     this.products$.next([...this.products$.value, product]);
   }
 
-  removeProduct(product: Product) {
-    this.products$.next(this.products$.value.filter(p => p !== product));
+  removeProduct(index: number) {
+    this.products$.next(this.products$.value.filter((_, i) => i !== index));
   }
 }

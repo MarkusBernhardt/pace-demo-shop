@@ -1,10 +1,12 @@
 <div class="d-flex justify-between align-center">
     <span></span>
-    <a routerLink="/" routerLinkActive="active" style="text-decoration: none; color: black;">
-        <h1>Demo Shop</h1>
+    <a routerLink="/" routerLinkActive="active" style="text-decoration: none; color: black; height: 64px;" class="d-flex align-center">
+        <img src="images/brand.png" alt="logo" style="height: 50px;">
+        <span class="fw-bold fs-4">Sneaker Store</span>
     </a>
     <button mat-icon-button [routerLink]="'/cart'" class="mx-2">
         <mat-icon matBadge="{{ cartItemsCount }}" matBadgeColor="warn">
             shopping_cart</mat-icon>
     </button>
 </div>
+<mat-divider></mat-divider>

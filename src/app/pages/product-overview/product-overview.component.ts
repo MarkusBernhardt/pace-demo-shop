@@ -14,54 +14,24 @@ export class ProductOverviewComponent {
   // list of products
   products: Array<Product> = [
     {
-      name: 'Product 1',
-      price: 100,
-      image: 'https://via.placeholder.com'
+      name: 'Sporty',
+      price: 119.99,
+      imageUrl: 'images/1.png'
     },
     {
-      name: 'Product 2',
-      price: 200,
-      image: 'https://via.placeholder.com'
+      name: 'Funky',
+      price: 199.99,
+      imageUrl: 'images/2.png'
     },
     {
-      name: 'Product 3',
-      price: 300,
-      image: 'https://via.placeholder.com'
+      name: 'Casual',
+      price: 99.99,
+      imageUrl: 'images/3.png'
     },
     {
-      name: 'Product 4',
-      price: 400,
-      image: 'https://via.placeholder.com'
-    },
-    {
-      name: 'Product 5',
-      price: 500,
-      image: 'https://via.placeholder.com'
-    },
-    {
-      name: 'Product 6',
-      price: 600,
-      image: 'https://via.placeholder.com'
-    },
-    {
-      name: 'Product 7',
-      price: 700,
-      image: 'https://via.placeholder.com'
-    },
-    {
-      name: 'Product 8',
-      price: 800,
-      image: 'https://via.placeholder.com'
-    },
-    {
-      name: 'Product 9',
-      price: 900,
-      image: 'https://via.placeholder.com'
-    },
-    {
-      name: 'Product 10',
-      price: 1000,
-      image: 'https://via.placeholder.com'
+      name: 'Classic',
+      price: 149.99,
+      imageUrl: 'images/4.png'
     },
   ];
 
