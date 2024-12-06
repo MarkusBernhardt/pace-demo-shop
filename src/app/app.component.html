@@ -1,4 +1,11 @@
-<app-navigation-bar></app-navigation-bar>
-<div class="content-wrapper d-flex p-4">
-  <router-outlet></router-outlet>
-</div>
+<mat-drawer-container class="h-100">
+  <mat-drawer #settingsDrawer mode="over" [opened]="sideBarOpen$ | async"
+    (closed)="uiService.toggleSettingsSideBar()">
+    <p>Settings</p>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-navigation-bar></app-navigation-bar>
+    <div class="content-wrapper d-flex p-4">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
