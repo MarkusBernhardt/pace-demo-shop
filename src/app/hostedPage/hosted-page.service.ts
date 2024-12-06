@@ -9,8 +9,8 @@ export class HostedPageService {
 
   constructor(public httpClient: HttpClient) { }
 
-  public post(HostedPage: HostedPage) {
-    return this.httpClient.post('https://api.stripe.com/v1/checkout/sessions', HostedPage);
+  public post(hostedPage: HostedPage) {
+    return this.httpClient.post('https://api.stripe.com/v1/checkout/sessions', hostedPage);
   }
 
 }
