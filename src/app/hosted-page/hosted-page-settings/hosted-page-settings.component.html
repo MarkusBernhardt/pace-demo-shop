@@ -1,0 +1,35 @@
+<div class="p-2">
+    <h2>Settings for hostedpage</h2>
+    <form [formGroup]="hostedPageForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="w-100">
+            <mat-label>Amount</mat-label>
+            <input matInput formControlName="amount">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <mat-label>Currency Code</mat-label>
+            <input matInput formControlName="currencyCode">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phoneNumber">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <mat-label>Email Address</mat-label>
+            <input matInput formControlName="emailAddress">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName">
+        </mat-form-field>
+<!--         <mat-form-field class="w-100">
+            <mat-label>Birth Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthDate">
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+</div>

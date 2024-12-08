@@ -5,10 +5,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { UiService } from './services/ui.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { HostedPageSettingsComponent } from "./hosted-page/hosted-page-settings/hosted-page-settings.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavigationBarComponent, MatSidenavModule, AsyncPipe],
+  imports: [RouterOutlet, NavigationBarComponent, MatSidenavModule, AsyncPipe, HostedPageSettingsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
