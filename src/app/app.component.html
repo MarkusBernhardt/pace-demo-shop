@@ -1,7 +1,12 @@
 <mat-drawer-container class="h-100">
   <mat-drawer #settingsDrawer mode="over" [opened]="sideBarOpen$ | async"
     (closed)="uiService.toggleSettingsSideBar()">
-    <app-hosted-page-settings></app-hosted-page-settings>
+    <div *ngIf="authenticateTokenAuthV1ResponseDto$ | async as authenticateTokenAuthV1ResponseDto; else unAuthorized">
+      <app-hosted-page-settings></app-hosted-page-settings>
+    </div>
+    <ng-template #unAuthorized>
+      <app-login></app-login>
+    </ng-template>
   </mat-drawer>
   <mat-drawer-content>
     <app-navigation-bar></app-navigation-bar>

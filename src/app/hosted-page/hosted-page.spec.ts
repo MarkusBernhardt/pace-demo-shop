@@ -1,7 +1,7 @@
-import { HostedPage } from './hosted-page';
+import { CreateHostedPageV1RequestDto } from './hosted-page';
 
 describe('HostedPage', () => {
   it('should create an instance', () => {
-    expect(new HostedPage()).toBeTruthy();
+    expect(new CreateHostedPageV1RequestDto()).toBeTruthy();
   });
 });

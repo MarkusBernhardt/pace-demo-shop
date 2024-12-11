@@ -1,79 +1,16 @@
-<div class="p-4">
-  <h2>Settings for hostedpage</h2>
-  <form [formGroup]="hostedPageForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="w-100">
-      <mat-label>Amount</mat-label>
-      <input matInput formControlName="amount" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>Currency Code</mat-label>
-      <input matInput formControlName="currencyCode" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>Phone Number</mat-label>
-      <input matInput formControlName="phoneNumber" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>Email Address</mat-label>
-      <input matInput formControlName="emailAddress" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>First Name</mat-label>
-      <input matInput formControlName="firstName" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>Last Name</mat-label>
-      <input matInput formControlName="lastName" />
-    </mat-form-field>
-    <!--         <mat-form-field class="w-100">
-            <mat-label>Birth Date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="birthDate">
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field> -->
-    <mat-form-field class="w-100">
-      <mat-label>Birth City</mat-label>
-      <input matInput formControlName="birthCity" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>Birth Country Code</mat-label>
-      <input matInput formControlName="birthCountryCode" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>Language Code</mat-label>
-      <input matInput formControlName="languageCode" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>Nationality Code</mat-label>
-      <input matInput formControlName="nationalityCode" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>Street Name</mat-label>
-      <input matInput formControlName="streetName" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>House Number</mat-label>
-      <input matInput formControlName="houseNumber" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>Additional Address Line</mat-label>
-      <input matInput formControlName="additionalAddressLine" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>Postal Code</mat-label>
-      <input matInput formControlName="postalCode" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>City</mat-label>
-      <input matInput formControlName="city" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>State Code</mat-label>
-      <input matInput formControlName="stateCode" />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>Country Code</mat-label>
-      <input matInput formControlName="countryCode" />
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Submit</button>
-  </form>
-</div>
+<h2>Settings for hostedpage</h2>
+<form [formGroup]="hostedPageForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="w-100">
+    <mat-label>Amount</mat-label>
+    <input matInput formControlName="amount" />
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>Currency Code</mat-label>
+    <input matInput formControlName="currencyCode" />
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>Type</mat-label>
+    <input matInput formControlName="type" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>

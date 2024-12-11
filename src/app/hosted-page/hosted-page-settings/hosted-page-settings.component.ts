@@ -4,6 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { HostedPageService } from '../hosted-page.service';
+import { CreateHostedPageV1RequestDto } from '../hosted-page';
 
 @Component({
   selector: 'app-hosted-page-settings',
@@ -12,7 +14,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    MatDatepickerModule
+    MatDatepickerModule,
   ],
   templateUrl: './hosted-page-settings.component.html',
   styleUrl: './hosted-page-settings.component.css',
@@ -20,10 +22,13 @@ import { MatInputModule } from '@angular/material/input';
 export class HostedPageSettingsComponent {
   hostedPageForm: any;
 
-  constructor(public formBuilder: FormBuilder) {
+  constructor(
+    public formBuilder: FormBuilder,
+    private hostedPageService: HostedPageService
+  ) {
     this.hostedPageForm = this.formBuilder.group({
-      amount: '',
-      currencyCode: '',
+      amount: 0,
+      currencyCode: 'EUR',
       phoneNumber: '',
       emailAddress: '',
       firstName: '',
@@ -40,11 +45,21 @@ export class HostedPageSettingsComponent {
       city: '',
       stateCode: '',
       countryCode: '',
+      type: 'CREATE_DEBIT_ORDER',
     });
   }
 
   onSubmit(): void {
-    // Process checkout data here
-    console.warn('Your order has been submitted', this.hostedPageForm.value);
+    const createHostedPageV1RequestDto = new CreateHostedPageV1RequestDto({
+      type: this.hostedPageForm.value.type,
+      amount: this.hostedPageForm.value.amount,
+      currencyCode: this.hostedPageForm.value.currencyCode,
+    });
+
+    this.hostedPageService
+      .post(createHostedPageV1RequestDto)
+      .subscribe((response) => {
+        console.log(response);
+      });
   }
 }

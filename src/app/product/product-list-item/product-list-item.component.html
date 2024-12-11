@@ -1,8 +1,12 @@
 <mat-list-item>
-    <img matListItemAvatar src="{{ product.imageUrl }}" alt="{{ product.name }}">
-    <span matListItemTitle>{{ product.name }}</span>
-    <span matListItemLine>{{ product.price }} €</span>
-    <button mat-icon-button (click)="onRemoveFromCart()" matListItemMeta>
-        <mat-icon>remove_shopping_cart</mat-icon>
-     </button>
+  <img
+    matListItemAvatar
+    src="{{ product.imageUrl }}"
+    alt="{{ product.name }}"
+  />
+  <span matListItemTitle>{{ product.name }}</span>
+  <span matListItemLine>{{ product.price }} €</span>
+  <button mat-icon-button (click)="onRemoveFromCart()" matListItemMeta>
+    <mat-icon>remove_shopping_cart</mat-icon>
+  </button>
 </mat-list-item>

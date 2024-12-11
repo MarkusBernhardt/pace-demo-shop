@@ -3,10 +3,11 @@ import { Product } from '../product';
 import { MatListModule } from '@angular/material/list';
 import { MatIcon } from '@angular/material/icon';
 import { CartService } from '../../pages/cart/cart.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-product-list-item',
-  imports: [MatListModule, MatIcon],
+  imports: [MatListModule, MatIcon, MatButtonModule],
   templateUrl: './product-list-item.component.html',
   styleUrl: './product-list-item.component.css'
 })

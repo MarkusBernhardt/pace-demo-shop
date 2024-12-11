@@ -15,22 +15,22 @@ export class ProductOverviewComponent {
   products: Array<Product> = [
     {
       name: 'Sporty',
-      price: 119.99,
+      price: 1.99,
       imageUrl: 'images/1.png'
     },
     {
       name: 'Funky',
-      price: 199.99,
+      price: 4.99,
       imageUrl: 'images/2.png'
     },
     {
       name: 'Casual',
-      price: 99.99,
+      price: 6.99,
       imageUrl: 'images/3.png'
     },
     {
       name: 'Classic',
-      price: 149.99,
+      price: 9.99,
       imageUrl: 'images/4.png'
     },
   ];
