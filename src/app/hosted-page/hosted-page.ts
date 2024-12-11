@@ -53,3 +53,4 @@ export class PaymentMethod {
     this.SEPA = SEPA;
   }
 }
+

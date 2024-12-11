@@ -7,5 +7,8 @@
         <mat-divider></mat-divider>
     <mat-list-item *ngIf="products$ | async as products">
         <span matLine class="fw-bold">Total {{ getTotalPrice() | async }} €</span>
+        <button mat-button [routerLink]="['/checkout']" >
+            checkout
+        </button>
     </mat-list-item>
 </mat-list>

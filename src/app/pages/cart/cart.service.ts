@@ -3,19 +3,25 @@ import { Product } from '../../product/product';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-
+  private products: Product[] = [];
   public products$ = new BehaviorSubject<Product[]>([]);
 
-  constructor() { }
+  constructor() {}
 
   addProduct(product: Product) {
-    this.products$.next([...this.products$.value, product]);
+    this.products.push(product);
+    this.products$.next([...this.products]);
   }
 
   removeProduct(index: number) {
-    this.products$.next(this.products$.value.filter((_, i) => i !== index));
+    this.products.splice(index, 1);
+    this.products$.next([...this.products]);
+  }
+
+  getTotalPrice() {
+    return this.products.reduce((acc, product) => acc + product.price, 0);
   }
 }

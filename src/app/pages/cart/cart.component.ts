@@ -6,6 +6,8 @@ import { Product } from '../../product/product';
 import { ProductListItemComponent } from '../../product/product-list-item/product-list-item.component';
 import { MatList, MatListItem } from '@angular/material/list';
 import { MatDivider } from '@angular/material/divider';
+import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-cart',
@@ -17,6 +19,8 @@ import { MatDivider } from '@angular/material/divider';
     MatListItem,
     NgIf,
     MatDivider,
+    RouterModule,
+    MatIconModule
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',

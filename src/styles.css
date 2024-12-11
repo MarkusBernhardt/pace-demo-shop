@@ -35,6 +35,10 @@ body {
     flex-wrap: wrap;
 }
 
+.flex-column {
+    flex-direction: column;
+}
+
 /* margins */
 .mx-2 {
     margin-left: 0.5rem;
