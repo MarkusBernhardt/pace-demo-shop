@@ -56,10 +56,6 @@ export class HostedPageSettingsComponent {
       currencyCode: this.hostedPageForm.value.currencyCode,
     });
 
-    this.hostedPageService
-      .post(createHostedPageV1RequestDto)
-      .subscribe((response) => {
-        console.log(response);
-      });
+    this.hostedPageService.post(createHostedPageV1RequestDto);
   }
 }

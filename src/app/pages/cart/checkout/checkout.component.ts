@@ -4,8 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { CartService } from '../cart.service';
 import { HostedPageService } from '../../../hosted-page/hosted-page.service';
-import { CreateHostedPageV1RequestDto } from '../../../hosted-page/hosted-page';
+import { environment } from '../../../../environments/environment';
 
+declare var pace: any;
 @Component({
   selector: 'app-checkout',
   imports: [MatRadioModule, FormsModule, MatButtonModule],
@@ -14,6 +15,7 @@ import { CreateHostedPageV1RequestDto } from '../../../hosted-page/hosted-page';
 })
 export class CheckoutComponent {
   public paymentMethod: string;
+  scriptLoaded = false;
 
   constructor(
     private cartService: CartService,
@@ -23,12 +25,47 @@ export class CheckoutComponent {
   }
 
   createHostedPage() {
-    const createHostedPageV1RequestDto = new CreateHostedPageV1RequestDto({
-      type: 'CREATE_DEBIT_ORDER',
-      amount: this.cartService.getTotalPrice(),
-      currencyCode: 'EUR',
-    });
+    const createHostedPageV1ResponseDto =
+      this.hostedPageService.getCreateHostedPageV1ResponseDto();
+    const hostedPageId = createHostedPageV1ResponseDto?.hostedPage.id;
+    this.loadScript(`${environment.paceBaseUrl}/svelte/bundle.js`)
+      .then(() => {
+        pace.init({
+          props: { hostedPageId },
+        });
+        pace.hooks.finish = () => {
+          console.log('Demoshop: Pace finished');
+        };
+      })
+      .catch((error) => {
+        console.error('Failed to load the Svelte script:', error);
+      });
+  }
 
-    this.hostedPageService.post(createHostedPageV1RequestDto).subscribe();
+  loadScript(url: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if (this.scriptLoaded) {
+        console.log('Script already loaded.');
+        resolve();
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = url;
+      script.async = true;
+
+      script.onload = () => {
+        console.log(`Script loaded from ${url}`);
+        this.scriptLoaded = true;
+        resolve();
+      };
+
+      script.onerror = (error) => {
+        console.error(`Error loading script from ${url}`, error);
+        reject(error);
+      };
+
+      document.body.appendChild(script);
+    });
   }
 }
