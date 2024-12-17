@@ -72,6 +72,9 @@
               "buildTarget": "pace-demo-shop:build:development"
             }
           },
+          "options": {
+            "port": 4300
+          },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
@@ -100,5 +103,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

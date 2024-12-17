@@ -28,7 +28,7 @@ export class CheckoutComponent {
     const createHostedPageV1ResponseDto =
       this.hostedPageService.getCreateHostedPageV1ResponseDto();
     const hostedPageId = createHostedPageV1ResponseDto?.hostedPage.id;
-    this.loadScript(`${environment.paceBaseUrl}/svelte/bundle.js`)
+    this.loadScript(`${environment.paceBaseUrl}/svelte/pace.js`)
       .then(() => {
         pace.init({
           props: { hostedPageId },

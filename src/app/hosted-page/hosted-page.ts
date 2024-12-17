@@ -23,15 +23,43 @@ export class CreateHostedPageV1RequestDto {
   constructor({
     type,
     amount,
-    currencyCode
+    currencyCode,
+    phoneNumber,
+    emailAddress,
+    firstName,
+    lastName,
+    streetName,
+    houseNumber,
+    postalCode,
+    city,
+    countryCode,
   } : {
     type: string,
     amount: number,
-    currencyCode: string
+    currencyCode: string,
+    phoneNumber: string,
+    emailAddress: string,
+    firstName: string,
+    lastName: string,
+    streetName: string,
+    houseNumber: string,
+    postalCode: string,
+    city: string,
+    countryCode: string,
   }) {
     this.type = type;
     this.amount = amount;
     this.currencyCode = currencyCode;
+    this.phoneNumber = phoneNumber;
+    this.emailAddress = emailAddress;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.streetName = streetName;
+    this.houseNumber = houseNumber;
+    this.city = city;
+    this.countryCode = countryCode;
+    this.postalCode = postalCode;
+
   }
 }
 export class HostedPageType {
@@ -92,10 +120,6 @@ export class PaymentMethod {
 export class CreateHostedPageV1ResponseDto {
   hostedPage: {
     id: string;
-    debtorId: string;
-    creditorId: string;
-    mandateId: string;
-    orderId: string;
     state: string;
     type: string;
     paymentMethod: string;
@@ -128,10 +152,6 @@ export class CreateHostedPageV1ResponseDto {
   } : {
     hostedPage: {
       id: string,
-      debtorId: string,
-      creditorId: string,
-      mandateId: string,
-      orderId: string,
       state: string,
       type: string,
       paymentMethod: string,

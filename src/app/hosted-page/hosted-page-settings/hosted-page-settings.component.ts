@@ -27,24 +27,24 @@ export class HostedPageSettingsComponent {
     private hostedPageService: HostedPageService
   ) {
     this.hostedPageForm = this.formBuilder.group({
-      amount: 0,
+      amount: 999,
       currencyCode: 'EUR',
-      phoneNumber: '',
-      emailAddress: '',
-      firstName: '',
-      lastName: '',
+      phoneNumber: '+491715770462',
+      emailAddress: 'markus.bernhardt@me.com',
+      firstName: 'Markus',
+      lastName: 'Bernhardt',
       birthDate: '',
       birthCity: '',
       birthCountryCode: '',
       languageCode: '',
       nationalityCode: '',
-      streetName: '',
-      houseNumber: '',
+      streetName: 'Waldparkstr.',
+      houseNumber: '47a',
       additionalAddressLine: '',
-      postalCode: '',
-      city: '',
+      postalCode: '85521',
+      city: 'Riemerling',
       stateCode: '',
-      countryCode: '',
+      countryCode: 'DE',
       type: 'CREATE_DEBIT_ORDER',
     });
   }
@@ -54,6 +54,15 @@ export class HostedPageSettingsComponent {
       type: this.hostedPageForm.value.type,
       amount: this.hostedPageForm.value.amount,
       currencyCode: this.hostedPageForm.value.currencyCode,
+      phoneNumber: this.hostedPageForm.value.phoneNumber,
+      emailAddress: this.hostedPageForm.value.emailAddress,
+      firstName: this.hostedPageForm.value.firstName,
+      lastName: this.hostedPageForm.value.lastName,
+      streetName: this.hostedPageForm.value.streetName,
+      houseNumber: this.hostedPageForm.value.houseNumber,
+      postalCode: this.hostedPageForm.value.postalCode,
+      city: this.hostedPageForm.value.city,
+      countryCode: this.hostedPageForm.value.countryCode,
     });
 
     this.hostedPageService.post(createHostedPageV1RequestDto);
