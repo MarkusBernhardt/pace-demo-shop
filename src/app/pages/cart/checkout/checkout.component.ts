@@ -33,8 +33,11 @@ export class CheckoutComponent {
         pace.init({
           props: { hostedPageId },
         });
-        pace.hooks.finish = () => {
-          console.log('Demoshop: Pace finished');
+        pace.hooks.success = () => {
+          console.log('Demoshop: Pace finished sucessfully');
+        };
+        pace.hooks.ready = () => {
+          console.log('Demoshop: Pace is ready');
         };
       })
       .catch((error) => {
