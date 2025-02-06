@@ -11,10 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { TokenAuthService } from '../token-auth.service';
 import { AuthenticateTokenAuthV1RequestDto } from '../authenticate-token-auth-v1-request-dto';
 import { MatOptionModule } from '@angular/material/core';
-import { AsyncPipe, CommonModule } from '@angular/common';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { HostedPageService } from '../../hosted-page/hosted-page.service';
+import { CommonModule } from '@angular/common';
+import { BehaviorSubject } from 'rxjs';
 import {MatSelectModule} from '@angular/material/select';
+import { GatewayService } from '../../services/gateway.service';
 
 @Component({
   selector: 'app-login',
@@ -43,24 +43,13 @@ export class LoginComponent {
     'acc-gateway.pace.app',
     'sand-gateway.pace.app',
   ];
-  selectedGatewayUrl$ = new BehaviorSubject<string | null>('localhost'); // Observable holding the selected value
   selectedGatewayUrl: string | null = 'localhost';
 
   constructor(
     public formBuilder: FormBuilder,
     private tokenAuthService: TokenAuthService,
-    private hostedPageService: HostedPageService
+    public gatewayService: GatewayService
   ) {
-    // Keep the local variable in sync with the observable
-    this.selectedGatewayUrl$.subscribe(value => {
-      this.selectedGatewayUrl = value;
-    });
-    
-    // Update observable when the FormControl changes
-    this.gatewayControl.valueChanges.subscribe((value) => {
-      this.selectedGatewayUrl$.next(value);
-    });
-
     this.loginForm = this.formBuilder.group({
       username: 'user',
       password: 'user',
@@ -77,7 +66,6 @@ export class LoginComponent {
   }
 
   onGatewayUrlChange(newValue: string) {
-    this.selectedGatewayUrl = newValue; // Update local variable
-    this.selectedGatewayUrl$.next(newValue); // Push to observable
+    this.gatewayService.selectedGatewayUrl = newValue;
   }
 }

@@ -1,13 +1,13 @@
 <!-- dropdown with options for gatewayUrls (template driven)-->
-<div *ngIf="selectedGatewayUrl$ | async as selectedGatewayUrl">
+<div *ngIf="selectedGatewayUrl">
   <mat-form-field>
     <mat-label>Gateway URL</mat-label>
-    <mat-select [value]="selectedGatewayUrl" (selectionChange)="onGatewayUrlChange($event.value)">
-      <mat-option value="localhost">localhost</mat-option>
-      <mat-option value="dev-gateway.pace.app">dev-gateway.pace.app</mat-option>
-      <mat-option value="test-gateway.pace.app">test-gateway.pace.app</mat-option>
-      <mat-option value="acc-gateway.pace.app">acc-gateway.pace.app</mat-option>
-      <mat-option value="sand-gateway.pace.app">sand-gateway.pace.app</mat-option>
+    <mat-select [value]="gatewayService.selectedGatewayUrl" (selectionChange)="onGatewayUrlChange($event.value)">
+      <mat-option value="http://localhost">localhost</mat-option>
+      <mat-option value="https://dev-gateway.pace.app">dev-gateway.pace.app</mat-option>
+      <mat-option value="https://test-gateway.pace.app">test-gateway.pace.app</mat-option>
+      <mat-option value="https://acc-gateway.pace.app">acc-gateway.pace.app</mat-option>
+      <mat-option value="https://sand-gateway.pace.app">sand-gateway.pace.app</mat-option>
     </mat-select>
   </mat-form-field>
 </div>

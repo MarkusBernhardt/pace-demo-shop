@@ -7,7 +7,8 @@ import {
 import { TokenAuthService } from '../tokenAuth/token-auth.service';
 import { AuthenticateTokenAuthV1ResponseDto } from '../tokenAuth/authenticate-token-auth-v1-response-dto';
 import { switchMap } from 'rxjs/operators';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { GatewayService } from '../services/gateway.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,13 +17,11 @@ export class HostedPageService {
   createHostedPageV1ResponseDto: CreateHostedPageV1ResponseDto | undefined;
   createHostedPageV1ResponseDto$: Subject<CreateHostedPageV1ResponseDto> =
     new Subject();
-  
-  selectedGatewayUrl$: BehaviorSubject<string> = new BehaviorSubject('localhost');
-  selectedGatewayUrl: string = 'localhost';
 
   constructor(
     public httpClient: HttpClient,
     private tokenAuthService: TokenAuthService,
+    private gatewayService: GatewayService
   ) {}
 
   public post(
@@ -33,7 +32,7 @@ export class HostedPageService {
         switchMap(
           (authResponse: AuthenticateTokenAuthV1ResponseDto | undefined) =>
             this.httpClient.post(
-              `${this.selectedGatewayUrl}/api/v1/hosted-pages`,
+              `${this.gatewayService.selectedGatewayUrl}/api/v1/hosted-pages`,
               createHostedPageV1RequestDto,
               {
                 headers: {
@@ -60,14 +59,5 @@ export class HostedPageService {
     | CreateHostedPageV1ResponseDto
     | undefined {
     return this.createHostedPageV1ResponseDto;
-  }
-
-  public setSelectedGatewayUrl(gatewayUrl: string): void {
-    this.selectedGatewayUrl = gatewayUrl;
-    this.selectedGatewayUrl$.next(gatewayUrl);
-  }
-
-  public getSelectedGatewayUrl$(): Observable<string> {
-    return this.selectedGatewayUrl$.asObservable();
   }
 }
