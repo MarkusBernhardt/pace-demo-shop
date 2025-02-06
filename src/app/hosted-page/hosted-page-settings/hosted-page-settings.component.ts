@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HostedPageService } from '../hosted-page.service';
 import { CreateHostedPageV1RequestDto } from '../hosted-page';
 
+
 @Component({
   selector: 'app-hosted-page-settings',
   imports: [
@@ -21,6 +22,7 @@ import { CreateHostedPageV1RequestDto } from '../hosted-page';
 })
 export class HostedPageSettingsComponent {
   hostedPageForm: any;
+
 
   constructor(
     public formBuilder: FormBuilder,

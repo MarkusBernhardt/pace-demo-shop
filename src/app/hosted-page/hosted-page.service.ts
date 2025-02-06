@@ -4,11 +4,10 @@ import {
   CreateHostedPageV1RequestDto,
   CreateHostedPageV1ResponseDto,
 } from './hosted-page';
-import { environment } from '../../environments/environment';
 import { TokenAuthService } from '../tokenAuth/token-auth.service';
 import { AuthenticateTokenAuthV1ResponseDto } from '../tokenAuth/authenticate-token-auth-v1-response-dto';
 import { switchMap } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,11 +16,15 @@ export class HostedPageService {
   createHostedPageV1ResponseDto: CreateHostedPageV1ResponseDto | undefined;
   createHostedPageV1ResponseDto$: Subject<CreateHostedPageV1ResponseDto> =
     new Subject();
+  
+  selectedGatewayUrl$: BehaviorSubject<string> = new BehaviorSubject('localhost');
+  selectedGatewayUrl: string = 'localhost';
 
   constructor(
     public httpClient: HttpClient,
-    private tokenAuthService: TokenAuthService
+    private tokenAuthService: TokenAuthService,
   ) {}
+
   public post(
     createHostedPageV1RequestDto: CreateHostedPageV1RequestDto
   ): void {
@@ -30,7 +33,7 @@ export class HostedPageService {
         switchMap(
           (authResponse: AuthenticateTokenAuthV1ResponseDto | undefined) =>
             this.httpClient.post(
-              `${environment.paceGatewayUrl}/hosted-pages`,
+              `${this.selectedGatewayUrl}/api/v1/hosted-pages`,
               createHostedPageV1RequestDto,
               {
                 headers: {
@@ -53,9 +56,18 @@ export class HostedPageService {
     return this.createHostedPageV1ResponseDto$.asObservable();
   }
 
-  public getCreateHostedPageV1ResponseDto(): CreateHostedPageV1ResponseDto | undefined {
+  public getCreateHostedPageV1ResponseDto():
+    | CreateHostedPageV1ResponseDto
+    | undefined {
     return this.createHostedPageV1ResponseDto;
   }
 
+  public setSelectedGatewayUrl(gatewayUrl: string): void {
+    this.selectedGatewayUrl = gatewayUrl;
+    this.selectedGatewayUrl$.next(gatewayUrl);
+  }
 
+  public getSelectedGatewayUrl$(): Observable<string> {
+    return this.selectedGatewayUrl$.asObservable();
+  }
 }

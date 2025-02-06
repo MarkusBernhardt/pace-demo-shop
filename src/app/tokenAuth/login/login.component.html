@@ -1,3 +1,18 @@
+<!-- dropdown with options for gatewayUrls (template driven)-->
+<div *ngIf="selectedGatewayUrl$ | async as selectedGatewayUrl">
+  <mat-form-field>
+    <mat-label>Gateway URL</mat-label>
+    <mat-select [value]="selectedGatewayUrl" (selectionChange)="onGatewayUrlChange($event.value)">
+      <mat-option value="localhost">localhost</mat-option>
+      <mat-option value="dev-gateway.pace.app">dev-gateway.pace.app</mat-option>
+      <mat-option value="test-gateway.pace.app">test-gateway.pace.app</mat-option>
+      <mat-option value="acc-gateway.pace.app">acc-gateway.pace.app</mat-option>
+      <mat-option value="sand-gateway.pace.app">sand-gateway.pace.app</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<!-- form for login -->
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="w-100">
     <mat-label>Username</mat-label>
@@ -8,3 +23,4 @@
     <input matInput formControlName="password" />
   </mat-form-field>
   <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>

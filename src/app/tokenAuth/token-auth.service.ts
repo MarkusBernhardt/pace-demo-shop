@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { AuthenticateTokenAuthV1RequestDto } from './authenticate-token-auth-v1-request-dto';
 import { AuthenticateTokenAuthV1ResponseDto } from './authenticate-token-auth-v1-response-dto';
 import { BehaviorSubject } from 'rxjs';
+import { HostedPageService } from '../hosted-page/hosted-page.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,12 +15,17 @@ export class TokenAuthService {
     AuthenticateTokenAuthV1ResponseDto | undefined
   >(this.authenticateTokenAuthV1ResponseDto);
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private hostedPageService: HostedPageService
+  ) {}
 
-  authenticate(authenticateTokenAuthV1RequestDto: AuthenticateTokenAuthV1RequestDto) {
+  authenticate(
+    authenticateTokenAuthV1RequestDto: AuthenticateTokenAuthV1RequestDto
+  ) {
     this.httpClient
       .post(
-        environment.paceGatewayUrl + '/token-auth/authenticate',
+        this.hostedPageService.selectedGatewayUrl + '/api/v1/token-auth/authenticate',
         authenticateTokenAuthV1RequestDto
       )
       .subscribe((response: any) => {
