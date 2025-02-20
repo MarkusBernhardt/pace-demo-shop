@@ -4,5 +4,5 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GatewayService {
-    selectedGatewayUrl: string = 'localhost';
+    selectedGatewayUrl: string = 'http://localhost:8080';
 }

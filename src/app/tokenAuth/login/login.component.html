@@ -3,7 +3,7 @@
   <mat-form-field>
     <mat-label>Gateway URL</mat-label>
     <mat-select [value]="gatewayService.selectedGatewayUrl" (selectionChange)="onGatewayUrlChange($event.value)">
-      <mat-option value="http://localhost">localhost</mat-option>
+      <mat-option value="http://localhost:8080">localhost</mat-option>
       <mat-option value="https://dev-gateway.pace.app">dev-gateway.pace.app</mat-option>
       <mat-option value="https://test-gateway.pace.app">test-gateway.pace.app</mat-option>
       <mat-option value="https://acc-gateway.pace.app">acc-gateway.pace.app</mat-option>
