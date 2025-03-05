@@ -28,13 +28,15 @@ export class CheckoutComponent {
     const createHostedPageV1ResponseDto =
       this.hostedPageService.getCreateHostedPageV1ResponseDto();
     const hostedPageId = createHostedPageV1ResponseDto?.hostedPage.id;
+    const baseUrl = environment.paceBaseUrl;
     this.loadScript(`${environment.paceBaseUrl}/svelte/pace.js`)
       .then(() => {
-        pace.init({
-          props: { hostedPageId },
-        });
+        pace.init(hostedPageId, baseUrl);
         pace.hooks.success = () => {
           console.log('Demoshop: Pace finished sucessfully');
+        };
+        pace.hooks.error = () => {
+          console.log('Demoshop: Pace finished unsucessfully');
         };
         pace.hooks.ready = () => {
           console.log('Demoshop: Pace is ready');
