@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { AuthenticateTokenAuthV1RequestDto } from './authenticate-token-auth-v1-request-dto';
 import { AuthenticateTokenAuthV1ResponseDto } from './authenticate-token-auth-v1-response-dto';
 import { BehaviorSubject } from 'rxjs';

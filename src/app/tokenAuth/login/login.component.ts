@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
@@ -12,8 +11,7 @@ import { TokenAuthService } from '../token-auth.service';
 import { AuthenticateTokenAuthV1RequestDto } from '../authenticate-token-auth-v1-request-dto';
 import { MatOptionModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
-import { BehaviorSubject } from 'rxjs';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { GatewayService } from '../../services/gateway.service';
 
 @Component({
@@ -34,16 +32,7 @@ import { GatewayService } from '../../services/gateway.service';
 export class LoginComponent {
   public loginForm: any;
 
-  gatewayControl = new FormControl('localhost'); // FormControl to bind the select field
-
-  gatewayUrls: Array<String> = [
-    'localhost',
-    'dev-gateway.pace.app',
-    'test-gateway.pace.app',
-    'acc-gateway.pace.app',
-    'sand-gateway.pace.app',
-  ];
-  selectedGatewayUrl: string | null = 'localhost';
+  selectedGatewayUrl: string | null = 'http://localhost:8080';
 
   constructor(
     public formBuilder: FormBuilder,

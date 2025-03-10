@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { CartService } from '../cart.service';
 import { HostedPageService } from '../../../hosted-page/hosted-page.service';
-import { environment } from '../../../../environments/environment';
+import { GatewayService } from '../../../services/gateway.service';
 
 declare var pace: any;
 @Component({
@@ -19,7 +19,8 @@ export class CheckoutComponent {
 
   constructor(
     private cartService: CartService,
-    private hostedPageService: HostedPageService
+    private hostedPageService: HostedPageService,
+    public gatewayService: GatewayService
   ) {
     this.paymentMethod = 'MASTERCARD';
   }
@@ -28,8 +29,8 @@ export class CheckoutComponent {
     const createHostedPageV1ResponseDto =
       this.hostedPageService.getCreateHostedPageV1ResponseDto();
     const hostedPageId = createHostedPageV1ResponseDto?.hostedPage.id;
-    const baseUrl = environment.paceBaseUrl;
-    this.loadScript(`${environment.paceBaseUrl}/svelte/pace.js`)
+    const baseUrl = this.gatewayService.selectedGatewayUrl;
+    this.loadScript(`${baseUrl}/svelte/pace.js`)
       .then(() => {
         pace.init(hostedPageId, baseUrl);
         pace.hooks.success = () => {
