@@ -7,16 +7,14 @@ import {
 import { TokenAuthService } from '../tokenAuth/token-auth.service';
 import { AuthenticateTokenAuthV1ResponseDto } from '../tokenAuth/authenticate-token-auth-v1-response-dto';
 import { switchMap } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import {firstValueFrom, Observable, Subject} from 'rxjs';
 import { GatewayService } from '../services/gateway.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HostedPageService {
-  createHostedPageV1ResponseDto: CreateHostedPageV1ResponseDto | undefined;
-  createHostedPageV1ResponseDto$: Subject<CreateHostedPageV1ResponseDto> =
-    new Subject();
+  createHostedPageV1RequestDto: CreateHostedPageV1RequestDto | undefined;
 
   constructor(
     public httpClient: HttpClient,
@@ -24,16 +22,14 @@ export class HostedPageService {
     private gatewayService: GatewayService
   ) {}
 
-  public post(
-    createHostedPageV1RequestDto: CreateHostedPageV1RequestDto
-  ): void {
-    this.tokenAuthService.authenticateTokenAuthV1ResponseDto$
+  public async createHostedPage(): Promise<CreateHostedPageV1ResponseDto> {
+    const response = await firstValueFrom(this.tokenAuthService.authenticateTokenAuthV1ResponseDto$
       .pipe(
         switchMap(
           (authResponse: AuthenticateTokenAuthV1ResponseDto | undefined) =>
             this.httpClient.post(
               `${this.gatewayService.selectedGatewayUrl}/api/v1/hosted-pages`,
-              createHostedPageV1RequestDto,
+              this.createHostedPageV1RequestDto,
               {
                 headers: {
                   Authorization: 'Bearer ' + (authResponse?.bearerToken ?? ''),
@@ -41,23 +37,8 @@ export class HostedPageService {
               }
             )
         )
-      )
-      .subscribe((response) => {
-        this.createHostedPageV1ResponseDto =
-          response as CreateHostedPageV1ResponseDto;
-        this.createHostedPageV1ResponseDto$.next(
-          this.createHostedPageV1ResponseDto
-        );
-      });
-  }
+      ));
 
-  public getCreateHostedPageV1ResponseDto$(): Observable<CreateHostedPageV1ResponseDto> {
-    return this.createHostedPageV1ResponseDto$.asObservable();
-  }
-
-  public getCreateHostedPageV1ResponseDto():
-    | CreateHostedPageV1ResponseDto
-    | undefined {
-    return this.createHostedPageV1ResponseDto;
+      return response as CreateHostedPageV1ResponseDto;
   }
 }

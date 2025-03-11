@@ -25,11 +25,12 @@ export class CheckoutComponent {
     this.paymentMethod = 'MASTERCARD';
   }
 
-  createHostedPage() {
+  async createHostedPage() {
     const createHostedPageV1ResponseDto =
-      this.hostedPageService.getCreateHostedPageV1ResponseDto();
+      await this.hostedPageService.createHostedPage();
     const hostedPageId = createHostedPageV1ResponseDto?.hostedPage.id;
     const baseUrl = this.gatewayService.selectedGatewayUrl;
+    document.getElementById('pace-container')?.replaceChildren();
     this.loadScript(`${baseUrl}/svelte/pace.js`)
       .then(() => {
         pace.init(hostedPageId, baseUrl);
@@ -73,5 +74,13 @@ export class CheckoutComponent {
 
       document.body.appendChild(script);
     });
+  }
+
+  getAmount() {
+    let amount = this.hostedPageService.createHostedPageV1RequestDto?.amount;
+    if(!amount) {
+      return "0.00 EUR";
+    }
+    return  (amount / 100) + " EUR";
   }
 }

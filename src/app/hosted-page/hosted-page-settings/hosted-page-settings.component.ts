@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HostedPageService } from '../hosted-page.service';
 import { CreateHostedPageV1RequestDto } from '../hosted-page';
-
+import {UiService} from '../../services/ui.service';
 
 @Component({
   selector: 'app-hosted-page-settings',
@@ -23,36 +23,29 @@ import { CreateHostedPageV1RequestDto } from '../hosted-page';
 export class HostedPageSettingsComponent {
   hostedPageForm: any;
 
-
   constructor(
     public formBuilder: FormBuilder,
-    private hostedPageService: HostedPageService
+    public hostedPageService: HostedPageService,
+    public uiService: UiService
   ) {
     this.hostedPageForm = this.formBuilder.group({
+      type: 'CREATE_DEBIT_ORDER',
       amount: 999,
       currencyCode: 'EUR',
       phoneNumber: '+491715770462',
       emailAddress: 'markus.bernhardt@me.com',
       firstName: 'Markus',
       lastName: 'Bernhardt',
-      birthDate: '',
-      birthCity: '',
-      birthCountryCode: '',
-      languageCode: '',
-      nationalityCode: '',
-      streetName: 'Waldparkstr.',
-      houseNumber: '47a',
-      additionalAddressLine: '',
-      postalCode: '85521',
-      city: 'Riemerling',
-      stateCode: '',
+      streetName: '',
+      houseNumber: '',
+      postalCode: '',
+      city: '',
       countryCode: 'DE',
-      type: 'CREATE_DEBIT_ORDER',
     });
   }
 
   onSubmit(): void {
-    const createHostedPageV1RequestDto = new CreateHostedPageV1RequestDto({
+    this.hostedPageService.createHostedPageV1RequestDto = new CreateHostedPageV1RequestDto({
       type: this.hostedPageForm.value.type,
       amount: this.hostedPageForm.value.amount,
       currencyCode: this.hostedPageForm.value.currencyCode,
@@ -67,6 +60,6 @@ export class HostedPageSettingsComponent {
       countryCode: this.hostedPageForm.value.countryCode,
     });
 
-    this.hostedPageService.post(createHostedPageV1RequestDto);
+    this.uiService.toggleSettingsSideBar();
   }
 }

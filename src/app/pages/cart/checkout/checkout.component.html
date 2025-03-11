@@ -7,6 +7,6 @@
     <mat-radio-button class="example-radio-button" value="MASTERCARD">Visa / Mastercard</mat-radio-button>
 </mat-radio-group>
 
-<button mat-raised-button color="primary" (click)="createHostedPage()">Checkout</button>
+<button mat-raised-button color="primary" (click)="createHostedPage()">Checkout {{ getAmount() }}</button>
 
 <div id="pace-container"></div>

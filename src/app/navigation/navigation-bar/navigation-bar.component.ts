@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatBadge } from '@angular/material/badge';
-import {  MatIconButton } from '@angular/material/button';
+import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { CartService } from '../../pages/cart/cart.service';
