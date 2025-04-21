@@ -5,6 +5,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { CartService } from '../cart.service';
 import { HostedPageService } from '../../../hosted-page/hosted-page.service';
 import { GatewayService } from '../../../services/gateway.service';
+import {HostedPageSuccess} from '../../../hosted-page/hosted-page';
 
 declare var pace: any;
 @Component({
@@ -34,7 +35,11 @@ export class CheckoutComponent {
     this.loadScript(`${baseUrl}/svelte/pace.js`)
       .then(() => {
         pace.init(hostedPageId, baseUrl);
-        pace.hooks.success = () => {
+        pace.hooks.success = (success: HostedPageSuccess) => {
+          if(this.hostedPageService.createHostedPageV1RequestDto != null) {
+            this.hostedPageService.createHostedPageV1RequestDto.debtorId = success.debtorId;
+            this.hostedPageService.createHostedPageV1RequestDto.mandateId = success.mandateId;
+          }
           console.log('Demoshop: Pace finished sucessfully');
         };
         pace.hooks.error = () => {

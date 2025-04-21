@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HostedPageService } from '../hosted-page.service';
 import { CreateHostedPageV1RequestDto } from '../hosted-page';
-import {UiService} from '../../services/ui.service';
+import { UiService } from '../../services/ui.service';
 
 @Component({
   selector: 'app-hosted-page-settings',
@@ -58,6 +58,8 @@ export class HostedPageSettingsComponent {
       postalCode: this.hostedPageForm.value.postalCode,
       city: this.hostedPageForm.value.city,
       countryCode: this.hostedPageForm.value.countryCode,
+      debtorId: this.hostedPageForm.value.debtorId,
+      mandateId: this.hostedPageForm.value.mandateId,
     });
 
     this.uiService.toggleSettingsSideBar();

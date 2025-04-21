@@ -11,6 +11,8 @@ export class CreateHostedPageV1RequestDto {
   postalCode?: string;
   city?: string;
   countryCode?: string;
+  debtorId?: string;
+  mandateId?: string;
 
   constructor({
     type,
@@ -25,6 +27,8 @@ export class CreateHostedPageV1RequestDto {
     postalCode,
     city,
     countryCode,
+    debtorId,
+    mandateId,
   } : {
     type: string,
     amount: number,
@@ -38,6 +42,8 @@ export class CreateHostedPageV1RequestDto {
     postalCode: string,
     city: string,
     countryCode: string,
+    debtorId: string,
+    mandateId: string,
   }) {
     this.type = type;
     this.amount = amount;
@@ -51,7 +57,8 @@ export class CreateHostedPageV1RequestDto {
     this.city = city;
     this.countryCode = countryCode;
     this.postalCode = postalCode;
-
+    this.debtorId = debtorId;
+    this.mandateId = mandateId;
   }
 }
 
@@ -121,4 +128,88 @@ export class CreateHostedPageV1ResponseDto {
   }
 }
 
+export class HostedPageSuccess {
+  debtorFirstName?: string;
+  debtorId?: string;
+  debtorLastName?: string;
+  hostedPageId?: string;
+  mandateId?: string;
+  mandateReference?: string;
+  mandateState?: string;
+  mandateType?: string;
+  orderAmount?: number;
+  orderCurrencyCode?: string;
+  orderId?: string;
+  orderReference?: string;
+  orderState?: string;
+  orderType?: string;
+  orderUseBalance?: boolean;
+  paymentCardExpiryMonth?: number;
+  paymentCardExpiryYear?: number;
+  paymentCardIssuer?: string;
+  paymentCardNumberLast4?: number;
+
+  constructor({
+    debtorFirstName,
+    debtorId,
+    debtorLastName,
+    hostedPageId,
+    mandateId,
+    mandateReference,
+    mandateState,
+    mandateType,
+    orderAmount,
+    orderCurrencyCode,
+    orderId,
+    orderReference,
+    orderState,
+    orderType,
+    orderUseBalance,
+    paymentCardExpiryMonth,
+    paymentCardExpiryYear,
+    paymentCardIssuer,
+    paymentCardNumberLast4
+  } : {
+    debtorFirstName: string,
+    debtorId: string,
+    debtorLastName: string,
+    hostedPageId: string,
+    mandateId: string,
+    mandateReference: string,
+    mandateState: string,
+    mandateType: string,
+    orderAmount: number,
+    orderCurrencyCode: string,
+    orderId: string,
+    orderReference: string,
+    orderState: string,
+    orderType: string,
+    orderUseBalance: boolean,
+    paymentCardExpiryMonth: number,
+    paymentCardExpiryYear: number,
+    paymentCardIssuer: string,
+    paymentCardNumberLast4: number
+  }) {
+    this.debtorFirstName = debtorFirstName;
+    this.debtorId = debtorId;
+    this.debtorLastName = debtorLastName;
+    this.hostedPageId = hostedPageId;
+    this.mandateId = mandateId;
+    this.mandateReference = mandateReference;
+    this.mandateState = mandateState;
+    this.mandateType = mandateType;
+    this.orderAmount = orderAmount;
+    this.orderCurrencyCode = orderCurrencyCode;
+    this.orderId = orderId;
+    this.orderReference = orderReference;
+    this.orderState = orderState;
+    this.orderType = orderType;
+    this.orderUseBalance = orderUseBalance;
+    this.paymentCardExpiryMonth = paymentCardExpiryMonth;
+    this.paymentCardExpiryYear = paymentCardExpiryYear;
+    this.paymentCardIssuer = paymentCardIssuer;
+    this.paymentCardNumberLast4 = paymentCardNumberLast4;
+
+  }
+}
 
