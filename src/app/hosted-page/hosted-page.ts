@@ -13,6 +13,7 @@ export class CreateHostedPageV1RequestDto {
   countryCode?: string;
   debtorId?: string;
   mandateId?: string;
+  languageCode?: string;
 
   constructor({
     type,
@@ -29,6 +30,7 @@ export class CreateHostedPageV1RequestDto {
     countryCode,
     debtorId,
     mandateId,
+    languageCode,
   } : {
     type: string,
     amount: number,
@@ -44,6 +46,7 @@ export class CreateHostedPageV1RequestDto {
     countryCode: string,
     debtorId: string,
     mandateId: string,
+    languageCode: string,
   }) {
     this.type = type;
     this.amount = amount;
@@ -59,6 +62,7 @@ export class CreateHostedPageV1RequestDto {
     this.postalCode = postalCode;
     this.debtorId = debtorId;
     this.mandateId = mandateId;
+    this.languageCode = languageCode;
   }
 }
 

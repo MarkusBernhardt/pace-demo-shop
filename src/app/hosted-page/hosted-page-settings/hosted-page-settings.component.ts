@@ -41,6 +41,7 @@ export class HostedPageSettingsComponent {
       postalCode: '',
       city: '',
       countryCode: 'DE',
+      languageCode: 'de'
     });
   }
 
@@ -60,6 +61,7 @@ export class HostedPageSettingsComponent {
       countryCode: this.hostedPageForm.value.countryCode,
       debtorId: this.hostedPageForm.value.debtorId,
       mandateId: this.hostedPageForm.value.mandateId,
+      languageCode: this.hostedPageForm.value.languageCode,
     });
 
     this.uiService.toggleSettingsSideBar();
