@@ -41,7 +41,11 @@ export class HostedPageSettingsComponent {
       postalCode: '',
       city: '',
       countryCode: 'DE',
-      languageCode: 'de'
+      languageCode: 'de',
+      memo: '{\n' +
+        '    "merchant":"www34",\n' +
+        '    "merchantTransactionId":"68a332b5bd54654aa716306b-0"\n' +
+        '}'
     });
   }
 
@@ -62,6 +66,7 @@ export class HostedPageSettingsComponent {
       debtorId: this.hostedPageForm.value.debtorId,
       mandateId: this.hostedPageForm.value.mandateId,
       languageCode: this.hostedPageForm.value.languageCode,
+      memo: this.hostedPageForm.value.memo,
     });
 
     this.uiService.toggleSettingsSideBar();
