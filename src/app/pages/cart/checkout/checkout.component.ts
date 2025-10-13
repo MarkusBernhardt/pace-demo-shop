@@ -5,7 +5,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { CartService } from '../cart.service';
 import { HostedPageService } from '../../../hosted-page/hosted-page.service';
 import { GatewayService } from '../../../services/gateway.service';
-import {HostedPageSuccess} from '../../../hosted-page/hosted-page';
+import { HostedPageSuccess } from '../../../hosted-page/hosted-page';
 
 declare var pace: any;
 @Component({
