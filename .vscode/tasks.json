@@ -59,7 +59,7 @@
     {
       "label": "Deploy to CapRover",
       "type": "shell",
-      "command": "caprover deploy -n bognermaerkl -a demo-shop -b main",
+      "command": "caprover deploy -n bognermaerkl -a demo-shop -b master",
       "group": "build",
       "presentation": {
         "echo": true,
