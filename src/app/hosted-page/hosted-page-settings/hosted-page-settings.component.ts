@@ -66,6 +66,7 @@ export class HostedPageSettingsComponent {
       debtorId: this.hostedPageForm.value.debtorId,
       mandateId: this.hostedPageForm.value.mandateId,
       languageCode: this.hostedPageForm.value.languageCode,
+      idempotencyKey: self.crypto.randomUUID().toString().substring(0,32),
       memo: this.hostedPageForm.value.memo,
     });
 
